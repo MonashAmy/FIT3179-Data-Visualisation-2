@@ -1,0 +1,75 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A population pyramid showing percentages by age group, gender, and location in Australia.",
+    "data": {
+      "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/main/data/data2.csv"
+    },
+    "transform": [
+      {
+        "calculate": "trim(datum['Age group (years)'])",
+        "as": "AgeGroup"
+      },
+      {
+        "calculate": "trim(datum.Gender)",
+        "as": "GenderClean"
+      },
+      {
+        "calculate": "trim(datum.Location)",
+        "as": "LocationClean"
+      },
+      {
+        "calculate": "datum.GenderClean === 'Females' ? -datum.Percentage : datum.Percentage",
+        "as": "signed_percentage"
+      },
+      {
+        "calculate": "datum.GenderClean + '-' + datum.LocationClean",
+        "as": "GenderLocation"
+      }
+    ],
+    "width": 400,
+    "height": 300,
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "AgeGroup",
+        "type": "ordinal",
+        "axis": {
+          "title": "Age Group"
+        },
+        "sort": "descending"
+      },
+      "x": {
+        "aggregate": "sum",
+        "field": "signed_percentage",
+        "title": "Population (%)",
+        "axis": {
+          "format": "s"
+        }
+      },
+      "color": {
+        "field": "GenderLocation",
+        "scale": {
+          "domain": [
+            "Females-Capital cities", "Females-Rest of Australia",
+            "Males-Capital cities", "Males-Rest of Australia"
+          ],
+          "range": [
+            "#1f77b4", "#aab7c7", 
+            "#ff7f0e", "#fcbf49" 
+          ]
+        },
+        "legend": {
+          "orient": "top",
+          "title": null
+        }
+      }
+    },
+    "config": {
+      "view": {
+        "stroke": null
+      },
+      "axis": {
+        "grid": false
+      }
+    }
+  }

@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data3.csv",
+      "format": {
+        "type": "csv"
+      }
+    },
+    "repeat": {"layer": ["Births", "Deaths", "Natural increase"]},
+    "spec": {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "State",
+          "type": "nominal",
+          "title": "State",
+          "axis": {
+            "labelAngle": 45
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": {"repeat": "layer"},
+          "type": "quantitative",
+          "title": "Total"
+        },
+        "color": {
+          "datum": {"repeat": "layer"},
+          "title": "Measure"
+        },
+        "xOffset": {"datum": {"repeat": "layer"}}
+      }
+    },
+    "config": {
+      "mark": {"invalid": null}
+    }
+  }
