@@ -1,0 +1,43 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data5.csv"
+    },
+    "transform": [
+      {
+        "fold": ["Number of Australian-born (M)", "Number of overseas-born (M)"],
+        "as": ["Population Type", "Population (Millions)"]
+      }
+    ],
+    "mark": {
+      "type": "bar",
+      "tooltip": true,
+      "width": 10
+    },
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year",
+        "axis": {
+          "labelAngle": 45,  
+          "bandPosition": 0.5
+        }
+      },
+      "y": {
+        "aggregate": "sum",
+        "field": "Population (Millions)",
+        "type": "quantitative",
+        "title": "Millions"
+      },
+      "color": {
+        "field": "Population Type",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Number of Australian-born (M)", "Number of overseas-born (M)"],
+          "range": ["#1f77b4", "#ff7f0e"] 
+        },
+        "title": "Population Type"
+      }
+    }
+}
