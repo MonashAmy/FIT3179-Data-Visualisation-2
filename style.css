@@ -1,0 +1,45 @@
+.grid-container {
+    background: white;
+    max-width: 2000px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-container > div {
+    background: white;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid white;
+}
+
+.grid-container > div:nth-child(1) {
+    grid-column: span 4;
+}
+
+.grid-container > div:nth-child(2) {
+    grid-column: span 3;
+}
+
+.grid-container > div:nth-child(3) {
+    grid-column: span 1;
+}
+
+.grid-container > div:nth-child(4) {
+    grid-column: 2 / span 6;
+}
+
+.grid-container > div:nth-child(5) {
+    grid-column: span 4;
+}
+
+.grid-container > div:nth-child(6) {
+    grid-column: span 1;
+}
+
+.grid-container > div:nth-child(7) {
+    grid-column: span ;
+}
+
+.grid-container > div:nth-child(8) {
+    grid-column: span 2;
+}
