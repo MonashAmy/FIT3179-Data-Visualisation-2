@@ -1,9 +1,18 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Age and Sex Distribution Across Capital Cities",
+      "anchor": "middle",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "dy": -10
+    },
     "description": "A population pyramid showing percentages by age group, gender, and location in Australia.",
+    
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/main/data/data2.csv"
     },
+    
     "transform": [
       {
         "calculate": "trim(datum['Age group (years)'])",
@@ -22,13 +31,23 @@
         "as": "signed_percentage"
       },
       {
-        "calculate": "datum.GenderClean + '-' + datum.LocationClean",
+        "calculate": "datum.GenderClean + ' - ' + datum.LocationClean",
         "as": "GenderLocation"
+      },
+      {
+        "calculate": "round(datum.Percentage * 100) / 100",
+        "as": "RoundedPercentage"
       }
     ],
-    "width": 400,
-    "height": 300,
-    "mark": "bar",
+  
+    "width": 360,
+    "height": 350,
+    
+    "mark": {
+      "type": "bar",
+      "tooltip": true
+    },
+    
     "encoding": {
       "y": {
         "field": "AgeGroup",
@@ -50,20 +69,38 @@
         "field": "GenderLocation",
         "scale": {
           "domain": [
-            "Females-Capital cities", "Females-Rest of Australia",
-            "Males-Capital cities", "Males-Rest of Australia"
+            "Females - Capital cities", "Females - Rest of Australia",
+            "Males - Capital cities", "Males - Rest of Australia"
           ],
           "range": [
             "#1f77b4", "#aab7c7", 
-            "#ff7f0e", "#fcbf49" 
+            "#ff7f0e", "#fcbf49"
           ]
         },
         "legend": {
-          "orient": "top",
-          "title": null
+          "orient": "right",
+          "title": "Population Type",
+          "titleFontSize": 10,
+          "labelFontSize": 10
         }
-      }
+      },
+      "tooltip": [
+        {
+          "field": "GenderLocation",
+          "title": "Gender and Location"
+        },
+        {
+          "field": "RoundedPercentage",
+          "title": "Population (%)",
+          "format": ".2f"
+        },
+        {
+          "field": "AgeGroup",
+          "title": "Age Group"
+        }
+      ]
     },
+    
     "config": {
       "view": {
         "stroke": null
@@ -72,4 +109,4 @@
         "grid": false
       }
     }
-  }
+  }  

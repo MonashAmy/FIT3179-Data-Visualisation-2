@@ -1,21 +1,38 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Pie chart illustrating Australia's estimated population by country of birth in 2023, excluding Australia to highlight the countries with the largest migrant populations.",
+        "width": 800,
+    "height": 300,
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data6.csv",
       "format": {
         "type": "csv"
       }
     },
-    "mark": "arc",
-    "encoding": {
-      "theta": {
-        "field": "Estimated population 2023 (%)",
-        "type": "quantitative"
-      },
-      "color": {
-        "field": "Country of birth",
-        "type": "nominal"
+    "repeat": {"layer": ["Overseas arrivals", "Overseas departures", "Net overseas migration"]},
+    "spec": {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "State",
+          "type": "nominal",
+          "axis": {
+            "labelAngle": 45
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": {"repeat": "layer"},
+          "type": "quantitative",
+          "title": "Total Count"
+        },
+        "color": {
+          "datum": {"repeat": "layer"},
+          "title": "Migration Type"
+        },
+        "xOffset": {"datum": {"repeat": "layer"}}
       }
+    },
+    "config": {
+      "mark": {"invalid": null}
     }
   }

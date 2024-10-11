@@ -1,23 +1,61 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Household types over time.",
-    "data": {"url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data4.csv"},
-    "mark": "line",
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "temporal",
-        "title": "Year"
-      },
-      "y": {
-        "field": "Households",
-        "type": "quantitative",
-        "title": "Number of Households"
-      },
-      "color": {
-        "field": "Type of Households",
-        "type": "nominal",
-        "title": "Type of Households"
+    
+    "title": {
+      "text": "Proportion of Residents Born Overseas by State and Territory",
+      "fontSize": 16,
+      "anchor": "middle",
+      "dy": -10
+    },
+
+    "data": {
+      "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data4.csv",
+      "format": {
+        "type": "csv"
       }
-    }
+    },
+
+    "width": 400, 
+    "height": 300, 
+
+    "transform": [
+      {
+        "filter": "datum['Country of birth'] !== 'Australia'"
+      }
+    ],
+
+    "layer": [
+      {
+        "mark": {
+          "type": "arc",
+          "innerRadius": 20,
+          "stroke": "#fff"
+        },
+        "encoding": {
+          "theta": {
+            "field": "Estimated population 2023 (%)",
+            "type": "quantitative",
+            "stack": true
+          },
+          "color": {
+            "field": "Country of birth",
+            "type": "nominal"
+          }
+        }
+      },
+
+      {
+        "mark": {
+          "type": "text",
+          "radiusOffset": 25 
+        },
+        "encoding": {
+          "text": {
+            "field": "Country of birth",
+            "type": "nominal"
+          }
+        }
+      }
+    ]
   }
+  
