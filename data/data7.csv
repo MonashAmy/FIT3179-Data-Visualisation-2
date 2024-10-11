@@ -1,9 +1,9 @@
-State,Overseas arrivals,Overseas departures,Net overseas migration
-New South Wales,241387,73239,168148
-Victoria,207936,56196,151740
-Queensland,121965,39171,82794
-South Australia,35418,9370,26048
-Western Australia,86443,21541,64902
-Tasmania,6999,2295,4704
-Northern Territory,5715,1795,3920
-Australian Capital Territory,12476,5008,7468
+State,Interstate arrivals,Interstate departures,Net interstate migration
+New South Wales,81655,112838,-31183
+Victoria,74952,74415,537
+Queensland,107144,76214,30930
+South Australia,23638,25324,-1686
+Western Australia,36145,26106,10039
+Tasmania,12634,15494,-2860
+Northern Territory,13504,17591,-4087
+Australian Capital Territory,19557,21247,-1690
