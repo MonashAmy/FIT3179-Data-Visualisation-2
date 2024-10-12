@@ -2,60 +2,48 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
     "title": {
-      "text": "Proportion of Residents Born Overseas by State and Territory",
-      "fontSize": 16,
+      "text": "Resident Population by Country of Birth",
       "anchor": "middle",
-      "dy": -10
+      "fontSize": 16,
+      "dy": -10  
     },
-
+  
+    "description": "Pie chart illustrating Australia's estimated population by country of birth in 2023, excluding Australia to highlight the countries with the largest migrant populations.",
+  
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data4.csv",
       "format": {
         "type": "csv"
       }
     },
-
-    "width": 400, 
-    "height": 300, 
-
-    "transform": [
-      {
-        "filter": "datum['Country of birth'] !== 'Australia'"
+  
+    "width": 390,  
+    "height": 370, 
+  
+    "config": {
+      "view": {
+        "stroke": null
       }
-    ],
-
-    "layer": [
-      {
-        "mark": {
-          "type": "arc",
-          "innerRadius": 20,
-          "stroke": "#fff"
-        },
-        "encoding": {
-          "theta": {
-            "field": "Estimated population 2023 (%)",
-            "type": "quantitative",
-            "stack": true
-          },
-          "color": {
-            "field": "Country of birth",
-            "type": "nominal"
-          }
-        }
+    },
+  
+    "mark": {
+      "type": "arc",
+      "tooltip": true 
+    },
+  
+    "encoding": {
+      "theta": {
+        "field": "Estimated population 2023 (%)",
+        "type": "quantitative"
       },
-
-      {
-        "mark": {
-          "type": "text",
-          "radiusOffset": 25 
-        },
-        "encoding": {
-          "text": {
-            "field": "Country of birth",
-            "type": "nominal"
-          }
-        }
-      }
-    ]
+      "color": {
+        "field": "Country of birth",
+        "type": "nominal"
+      },
+      "tooltip": [
+        {"field": "Country of birth", "type": "nominal", "title": "Country"},
+        {"field": "Estimated population 2023 (%)", "type": "quantitative", "title": "Population (%)"}
+      ] 
+    }
   }
   

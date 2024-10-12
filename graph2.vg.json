@@ -73,8 +73,8 @@
             "Males - Capital cities", "Males - Rest of Australia"
           ],
           "range": [
-            "#1f77b4", "#aab7c7", 
-            "#ff7f0e", "#fcbf49"
+            "#6482AD", "#98B3CC",
+            "#5d222a", "#906A71"  
           ]
         },
         "legend": {

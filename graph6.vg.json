@@ -1,38 +1,68 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 800,
-    "height": 300,
+    
+    "title": {
+      "text": "Net Overseas Migration by State and Territory",
+      "anchor": "middle",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "dy": -10
+    },
+    
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data6.csv",
       "format": {
         "type": "csv"
       }
     },
-    "repeat": {"layer": ["Overseas arrivals", "Overseas departures", "Net overseas migration"]},
-    "spec": {
-      "mark": "bar",
-      "encoding": {
-        "x": {
-          "field": "State",
-          "type": "nominal",
-          "axis": {
-            "labelAngle": 45
-          }
+    
+    "width": 390,
+    "height": 300,
+    
+    "transform": [
+      {
+        "fold": ["Overseas arrivals", "Overseas departures", "Net overseas migration"],
+        "as": ["Migration Type", "Total Count"]
+      }
+    ],
+    
+    "mark": {
+      "type": "bar",
+      "tooltip": true
+    },
+    
+    "encoding": {
+      "y": {
+        "field": "State",
+        "type": "nominal"
+      },
+      "x": {
+        "field": "Total Count",
+        "type": "quantitative",
+        "title": "Total Count",
+        "axis": {
+          "labelAngle": 45
+        }
+      },
+      "xOffset": {
+        "field": "Migration Type"  
+      },
+      "color": {
+        "field": "Migration Type",
+        "title": null,
+        "legend": {
+          "orient": "top",
+          "titleOrient": "left",
+          "labelBaseline": "middle"
         },
-        "y": {
-          "aggregate": "sum",
-          "field": {"repeat": "layer"},
-          "type": "quantitative",
-          "title": "Total Count"
-        },
-        "color": {
-          "datum": {"repeat": "layer"},
-          "title": "Migration Type"
-        },
-        "xOffset": {"datum": {"repeat": "layer"}}
+        "scale": {
+          "domain": ["Overseas arrivals", "Overseas departures", "Net overseas migration"],
+          "range": ["#E2BBE9", "#9B86BD", "#5A639C"]
+        }
       }
     },
+    
     "config": {
       "mark": {"invalid": null}
     }
-  }
+  }  

@@ -1,37 +1,69 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     
+    "title": {
+      "text": "Net Interstate Migration by State and Territory",
+      "anchor": "middle",
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "dy": -10
+    },
+    
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data7.csv",
       "format": {
         "type": "csv"
       }
     },
-    "repeat": {"layer": ["Interstate arrivals", "Interstate departures", "Net interstate migration"]},
-    "spec": {
-      "mark": "bar",
-      "encoding": {
-        "x": {
-          "field": "State",
-          "type": "nominal",
-          "axis": {
-            "labelAngle": 45
-          }
+    
+    "width": 390,
+    "height": 300,
+    
+    "transform": [
+      {
+        "fold": ["Interstate arrivals", "Interstate departures", "Net interstate migration"],
+        "as": ["Migration Type", "Total Count"]
+      }
+    ],
+    
+    "mark": {
+      "type": "bar",
+      "tooltip": true
+    },
+    
+    "encoding": {
+      "y": {
+        "field": "State",
+        "type": "nominal",
+        "title": "State"
+      },
+      "x": {
+        "field": "Total Count",
+        "type": "quantitative",
+        "title": "Total Count",
+        "axis": {
+          "labelAngle": 45
+        }
+      },
+      "color": {
+        "field": "Migration Type",
+        "title": null,
+        "legend": {
+          "orient": "top",
+          "titleOrient": "left",
+          "labelBaseline": "middle"
         },
-        "y": {
-          "aggregate": "sum",
-          "field": {"repeat": "layer"},
-          "type": "quantitative",
-          "title": "Total Count"
-        },
-        "color": {
-          "datum": {"repeat": "layer"},
-          "title": "Migration Type"
-        },
-        "xOffset": {"datum": {"repeat": "layer"}}
+        "scale": {
+          "domain": ["Interstate arrivals", "Interstate departures", "Net interstate migration"],
+          "range": ["#B3E2A7", "#80B9AD", "#538392"]
+        }
+      },
+      "xOffset": {
+        "field": "Migration Type"  
       }
     },
+    
     "config": {
       "mark": {"invalid": null}
     }
-  }
+  }  

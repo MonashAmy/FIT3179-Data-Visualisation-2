@@ -35,9 +35,9 @@
       "x": {
         "field": "Total",
         "type": "quantitative",
-        "title": "Total Population",
+        "title": "Total Count",
         "axis": {
-          "labelAngle": -45
+          "labelAngle": 45
         }
       },
       "y": {
