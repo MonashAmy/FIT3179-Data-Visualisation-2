@@ -1,3 +1,6 @@
+var vg_1 = "graph1.vg.json";
+vegaEmbed("#graph1", vg_1).then(function(result) {}).catch(console.error);
+
 var vg_2 = "graph2.vg.json";
 vegaEmbed("#graph2", vg_2).then(function(result) {}).catch(console.error);
 
