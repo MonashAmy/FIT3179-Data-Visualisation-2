@@ -26,24 +26,38 @@
       }
     },
   
-    "mark": {
-      "type": "arc",
-      "tooltip": true 
-    },
-  
-    "encoding": {
-      "theta": {
-        "field": "Estimated population 2023 (%)",
-        "type": "quantitative"
-      },
-      "color": {
-        "field": "Country of birth",
-        "type": "nominal"
-      },
-      "tooltip": [
-        {"field": "Country of birth", "type": "nominal", "title": "Country"},
-        {"field": "Estimated population 2023 (%)", "type": "quantitative", "title": "Population (%)"}
-      ] 
-    }
+    "layer": [
+      {
+        "mark": {
+          "type": "arc",
+          "tooltip": true 
+        },
+        "params": [
+          {
+            "name": "country_parameter",
+            "select": {"type": "point", "fields": ["Country of birth"]},
+            "bind": "legend"
+          }
+        ],
+        "encoding": {
+          "theta": {
+            "field": "Estimated population 2023 (%)",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "Country of birth",
+            "type": "nominal"
+          },
+          "tooltip": [
+            {"field": "Country of birth", "type": "nominal", "title": "Country"},
+            {"field": "Estimated population 2023 (%)", "type": "quantitative", "title": "Population (%)"}
+          ],
+          "opacity": {
+            "condition": {"param": "country_parameter", "value": 1},
+            "value": 0.2
+          }
+        }
+      }
+    ]
   }
   
