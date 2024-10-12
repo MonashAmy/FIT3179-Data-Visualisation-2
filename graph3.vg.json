@@ -1,61 +1,82 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  
-    "title": {
-      "text": "Natural Population Growth by State and Territory",
-      "anchor": "middle",
-      "fontSize": 16,
-      "fontWeight": "bold",
-      "dy": -10
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Natural Population Growth by State and Territory",
+    "anchor": "middle",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "dy": -10
+  },
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data3.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+
+  "width": 390,
+  "height": 300,
+
+  "transform": [
+    {
+      "fold": ["Births", "Deaths", "Natural increase"],
+      "as": ["Measure", "Total"]
     },
-  
-    "data": {
-      "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data3.csv",
-      "format": {
-        "type": "csv"
+    {
+      "filter": {"selection": "MeasureSelector"}
+    }
+  ],
+
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+
+  "selection": {
+    "MeasureSelector": {
+      "type": "multi",
+      "fields": ["Measure"],
+      "bind": "legend"
+    }
+  },
+
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
+    },
+    "x": {
+      "field": "Total",
+      "type": "quantitative",
+      "title": "Total Count",
+      "axis": {
+        "labelAngle": 45
       }
     },
-  
-    "width": 300,
-    "height": 320,
-  
-    "transform": [
-      {
-        "fold": ["Births", "Deaths", "Natural increase"],
-        "as": ["Measure", "Total"]
-      }
-    ],
-  
-    "mark": {
-      "type": "bar",
-      "tooltip": true
+    "xOffset": {
+      "field": "Measure"
     },
-  
-    "encoding": {
-      "x": {
-        "field": "Total",
-        "type": "quantitative",
-        "title": "Total Count",
-        "axis": {
-          "labelAngle": 45
-        }
+    "color": {
+      "field": "Measure",
+      "title": null,
+      "scale": {
+        "domain": ["Births", "Deaths", "Natural increase"],
+        "range": ["#921A40", "#C75B7A", "#D9ABAB"]
       },
-      "y": {
-        "field": "State",
-        "type": "nominal",
-        "title": "State"
-      },
-      "color": {
-        "field": "Measure",
-        "type": "nominal",
-        "scale": {
-          "domain": ["Births", "Deaths", "Natural increase"],
-          "range": ["#921A40", "#C75B7A", "#D9ABAB"]
-        },
-        "title": "Measure"
-      },
-      "xOffset": {
-        "field": "Measure"
+      "legend": {
+        "orient": "top",
+        "titleOrient": "left",
+        "labelBaseline": "middle"
       }
     }
-  }  
+  },
+
+  "config": {
+    "mark": {
+      "invalid": null
+    }
+  }
+}

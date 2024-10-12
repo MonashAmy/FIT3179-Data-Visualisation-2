@@ -23,12 +23,23 @@
       {
         "fold": ["Interstate arrivals", "Interstate departures", "Net interstate migration"],
         "as": ["Migration Type", "Total Count"]
+      },
+      {
+        "filter": {"selection": "MigrationTypeSelector"}
       }
     ],
     
     "mark": {
       "type": "bar",
       "tooltip": true
+    },
+    
+    "selection": {
+      "MigrationTypeSelector": {
+        "type": "multi",
+        "fields": ["Migration Type"],
+        "bind": "legend"
+      }
     },
     
     "encoding": {
@@ -59,7 +70,7 @@
         }
       },
       "xOffset": {
-        "field": "Migration Type"  
+        "field": "Migration Type"
       }
     },
     

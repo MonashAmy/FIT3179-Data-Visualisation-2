@@ -23,12 +23,23 @@
       {
         "fold": ["Overseas arrivals", "Overseas departures", "Net overseas migration"],
         "as": ["Migration Type", "Total Count"]
+      },
+      {
+        "filter": {"selection": "MigrationTypeSelector"}
       }
     ],
     
     "mark": {
       "type": "bar",
       "tooltip": true
+    },
+    
+    "selection": {
+      "MigrationTypeSelector": {
+        "type": "multi",
+        "fields": ["Migration Type"],
+        "bind": "legend"
+      }
     },
     
     "encoding": {
@@ -65,4 +76,4 @@
     "config": {
       "mark": {"invalid": null}
     }
-  } 
+  }
