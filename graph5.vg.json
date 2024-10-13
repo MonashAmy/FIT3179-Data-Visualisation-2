@@ -1,62 +1,73 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  
-    "title": {
-      "text": "Proportion of Australia's Population Born Overseas",
-      "anchor": "middle",
-      "fontSize": 16,
-      "dy": -10
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Proportion of Australia's Population Born Overseas",
+    "anchor": "middle",
+    "fontSize": 16,
+    "dy": -10
+  },
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data5.csv"
+  },
+
+  "width": 950,
+  "height": 330,
+
+  "transform": [
+    {
+      "fold": ["Number of Australian-born (M)", "Number of overseas-born (M)"],
+      "as": ["Population Type", "Population (Millions)"]
     },
-  
-    "data": {
-      "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data5.csv"
-    },
-  
-    "width": 950,
-    "height": 330,
-  
-    "transform": [
-      {
-        "fold": ["Number of Australian-born (M)", "Number of overseas-born (M)"],
-        "as": ["Population Type", "Population (Millions)"]
-      }
-    ],
-  
-    "mark": {
-      "type": "bar",
-      "tooltip": true,
-      "width": 10
-    },
-  
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "ordinal",
-        "title": "Year",
-        "axis": {
-          "labelAngle": 45,
-          "bandPosition": 0.5
-        }
-      },
-      "y": {
-        "aggregate": "sum",
-        "field": "Population (Millions)",
-        "type": "quantitative",
-        "title": "Millions"
-      },
-      "color": {
-        "field": "Population Type",
-        "type": "nominal",
-        "scale": {
-          "domain": ["Number of Australian-born (M)", "Number of overseas-born (M)"],
-          "range": ["#fbba4c", "#A67B5B"] 
-        },
-        "title": "Population Type"
-      },
-      "tooltip": [
-        {"field": "Year", "type": "ordinal", "title": "Year"},
-        {"field": "Population Type", "type": "nominal", "title": "Population Type"},
-        {"field": "Population (Millions)", "type": "quantitative", "title": "Population (Millions)"}
-      ]
+    {
+      "filter": {"selection": "PopulationTypeSelector"}
     }
-  }  
+  ],
+
+  "mark": {
+    "type": "bar",
+    "tooltip": true,
+    "width": 10
+  },
+
+  "selection": {
+    "PopulationTypeSelector": {
+      "type": "multi",
+      "fields": ["Population Type"],
+      "bind": "legend"
+    }
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelAngle": 45,
+        "bandPosition": 0.5
+      }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Population (Millions)",
+      "type": "quantitative",
+      "title": "Millions"
+    },
+    "color": {
+      "field": "Population Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Number of Australian-born (M)", "Number of overseas-born (M)"],
+        "range": ["#fbba4c", "#A67B5B"] 
+      },
+      "title": "Population Type"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "Population Type", "type": "nominal", "title": "Population Type"},
+      {"field": "Population (Millions)", "type": "quantitative", "title": "Population (Millions)"}
+    ]
+  }
+}
