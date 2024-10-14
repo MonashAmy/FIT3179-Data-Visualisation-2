@@ -16,7 +16,7 @@
       }
     },
     
-    "width": 390,
+    "width": 450,
     "height": 300,
     
     "transform": [
@@ -25,7 +25,9 @@
         "as": ["Migration Type", "Total Count"]
       },
       {
-        "filter": {"selection": "MigrationTypeSelector"}
+        "filter": {
+        "selection": "Selector"
+      }
       }
     ],
     
@@ -35,7 +37,7 @@
     },
     
     "selection": {
-      "MigrationTypeSelector": {
+      "Selector": {
         "type": "multi",
         "fields": ["Migration Type"],
         "bind": "legend"

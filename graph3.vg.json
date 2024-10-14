@@ -16,7 +16,7 @@
     }
   },
 
-  "width": 390,
+  "width": 460,
   "height": 300,
 
   "transform": [
@@ -25,7 +25,9 @@
       "as": ["Measure", "Total"]
     },
     {
-      "filter": {"selection": "MeasureSelector"}
+      "filter": {
+        "selection": "Selector"
+      }
     }
   ],
 
@@ -35,7 +37,7 @@
   },
 
   "selection": {
-    "MeasureSelector": {
+    "Selector": {
       "type": "multi",
       "fields": ["Measure"],
       "bind": "legend"

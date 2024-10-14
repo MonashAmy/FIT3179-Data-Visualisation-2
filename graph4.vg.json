@@ -17,14 +17,8 @@
       }
     },
   
-    "width": 390,  
+    "width": 450,  
     "height": 370, 
-  
-    "config": {
-      "view": {
-        "stroke": null
-      }
-    },
   
     "layer": [
       {
@@ -58,6 +52,12 @@
           }
         }
       }
-    ]
+    ],
+
+    "config": {
+      "view": {
+        "stroke": null
+      }
+    }
   }
   

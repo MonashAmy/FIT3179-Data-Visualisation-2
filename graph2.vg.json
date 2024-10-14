@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {
-      "text": "Age and Sex Distribution Across Capital Cities",
+      "text": "Age and Sex Distribution by Population Type",
       "anchor": "middle",
       "fontSize": 16,
       "fontWeight": "bold",
@@ -40,7 +40,7 @@
       }
     ],
   
-    "width": 360,
+    "width": 445,
     "height": 350,
     
     "mark": {

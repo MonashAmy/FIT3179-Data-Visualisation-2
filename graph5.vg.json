@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data5.csv"
   },
 
-  "width": 950,
+  "width": 1150,
   "height": 330,
 
   "transform": [
@@ -21,7 +21,9 @@
       "as": ["Population Type", "Population (Millions)"]
     },
     {
-      "filter": {"selection": "PopulationTypeSelector"}
+      "filter": {
+        "selection": "Selector"
+      }
     }
   ],
 
@@ -32,7 +34,7 @@
   },
 
   "selection": {
-    "PopulationTypeSelector": {
+    "Selector": {
       "type": "multi",
       "fields": ["Population Type"],
       "bind": "legend"
