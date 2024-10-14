@@ -1,7 +1,7 @@
 /* Container Layout */
 .grid-container {
     background: white;
-    max-width: 1400px;
+    max-width: 1350px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 120px 160px 100px 450px 210px 100px 450px 210px 450px 160px 100px 450px 210px 50px;
@@ -159,7 +159,7 @@
 }
 
 .description {
-    font-size: 18px;
+    font-size: 17px;
     font-family: 'Roboto', sans-serif;
     text-align: left;
     color: #333;
