@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
     "title": {
       "text": "Age and Sex Distribution by Population Type",
       "anchor": "middle",
@@ -7,7 +8,6 @@
       "fontWeight": "bold",
       "dy": -10
     },
-    "description": "A population pyramid showing percentages by age group, gender, and location in Australia.",
     
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/main/data/data2.csv"
@@ -102,11 +102,7 @@
     },
     
     "config": {
-      "view": {
-        "stroke": null
-      },
-      "axis": {
-        "grid": false
-      }
+      "view": {"stroke": null},
+      "axis": {"grid": false}
     }
   }  

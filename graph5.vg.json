@@ -5,6 +5,7 @@
     "text": "Proportion of Australia's Population Born Overseas",
     "anchor": "middle",
     "fontSize": 16,
+    "fontWeight": "bold",
     "dy": -10
   },
 

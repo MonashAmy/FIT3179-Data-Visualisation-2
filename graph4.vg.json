@@ -8,8 +8,6 @@
       "dy": -10  
     },
   
-    "description": "Pie chart illustrating Australia's estimated population by country of birth in 2023, excluding Australia to highlight the countries with the largest migrant populations.",
-  
     "data": {
       "url": "https://raw.githubusercontent.com/MonashAmy/FIT3179-Data-Visualisation-2/refs/heads/main/data/data4.csv",
       "format": {
@@ -60,4 +58,3 @@
       }
     }
   }
-  
